@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Pranjali Gat's web development portfolio">
+  <title>Your Name | Developer Portfolio</title>
+
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --navy: #080d18;
+      --navy-light: #111c2e;
+      --blue: #8ba9d8;
+      --text: #f3f1ec;
+      --muted: #9aa6b8;
+      --line: #26354b;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--navy);
+      color: var(--text);
+      font-family: "DM Sans", sans-serif;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .serif {
+      font-family: "Playfair Display", serif;
+    }
+
+    .accent {
+      color: var(--blue);
+    }
+
+    .muted-text {
+      color: var(--muted);
+    }
+
+    /* Navigation */
+    .navbar {
+      background: rgba(8, 13, 24, .97);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .navbar-brand {
+      color: var(--text);
+      font: 600 1.6rem "Playfair Display", serif;
+    }
+
+    .navbar-brand:hover {
+      color: var(--text);
+    }
+
+    .navbar-brand span {
+      color: var(--blue);
+    }
+
+    .nav-link {
+      color: #c5cedb;
+    }
+
+    .nav-link:hover,
+    .nav-link:focus {
+      color: var(--blue);
+    }
+
+    .nav-contact {
+      color: var(--text);
+      border: 1px solid #526783;
+      border-radius: 3px;
+      padding: 8px 15px;
+    }
+
+    .nav-contact:hover {
+      color: var(--blue);
+      border-color: var(--blue);
+    }
+
+    /* Buttons */
+    .button-primary {
+      display: inline-block;
+      padding: 12px 18px;
+      background: #dce5f3;
+      color: #101827;
+      border: 0;
+      border-radius: 2px;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .button-primary:hover {
+      background: #fff;
+      color: #101827;
+      transform: translateY(-2px);
+    }
+
+    .button-outline {
+      display: inline-block;
+      padding: 11px 18px;
+      color: var(--text);
+      border: 1px solid #526783;
+      border-radius: 2px;
+      transition: .2s ease;
+    }
+
+    .button-outline:hover {
+      color: var(--blue);
+      border-color: var(--blue);
+    }
+
+    /* Intro */
+    .hero {
+      min-height: 690px;
+      padding-top: 115px;
+      padding-bottom: 80px;
+    }
+
+    .eyebrow,
+    .section-label {
+      color: var(--muted);
+      font-size: .72rem;
+      letter-spacing: .15em;
+    }
+
+    .hero h1 {
+      margin-top: 24px;
+      font: 500 clamp(3.2rem, 7vw, 5.8rem)/1.08 "Playfair Display", serif;
+      letter-spacing: -.04em;
+    }
+
+    .hero-copy {
+      max-width: 480px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .hero-photo {
+      min-height: 440px;
+      background:
+        linear-gradient(180deg, transparent 65%, rgba(8, 13, 24, .35)),
+        url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1100&q=85")
+        center / cover;
+      border: 1px solid var(--line);
+    }
+
+    /* Sections */
+    .portfolio-section {
+      padding: 75px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-label span {
+      color: var(--blue);
+      margin-right: 10px;
+    }
+
+    .portfolio-section h2 {
+      font: 500 clamp(2.5rem, 5vw, 4rem)/1.15 "Playfair Display", serif;
+    }
+
+    /* About */
+    .about-copy {
+      max-width: 490px;
+      color: var(--muted);
+    }
+
+    /* Skills */
+    .skill-card {
+      height: 100%;
+      min-height: 205px;
+      padding: 23px;
+      background: linear-gradient(145deg, #111d30, #0b1220);
+      border: 1px solid var(--line);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: #526783;
+    }
+
+    .skill-icon {
+      color: var(--blue);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .skill-card h3 {
+      margin-top: 20px;
+      font: 500 1.35rem "Playfair Display", serif;
+    }
+
+    .skill-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    /* Projects */
+    .project-card {
+      display: block;
+      color: var(--text);
+    }
+
+    .project-card img {
+      display: block;
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+      filter: saturate(.75);
+      transition: transform .25s ease, filter .25s ease;
+    }
+
+    .project-card:hover img {
+      filter: saturate(1);
+      transform: translateY(-4px);
+    }
+
+    .project-tall img {
+      height: 480px;
+    }
+
+    .project-type {
+      display: block;
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: .7rem;
+      letter-spacing: .13em;
+    }
+
+    .project-card h3 {
+      margin-top: 5px;
+      font: 500 1.4rem "Playfair Display", serif;
+    }
+
+    .project-card:hover h3 {
+      color: var(--blue);
+    }
+
+    /* Contact */
+    .social-link {
+      color: var(--blue);
+    }
+
+    .social-link:hover {
+      color: white;
+    }
+
+    .form-label {
+      color: #cbd4e0;
+      font-size: .85rem;
+    }
+
+    .form-control {
+      padding-left: 0;
+      color: var(--text);
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid #42516a;
+      border-radius: 0;
+    }
+
+    .form-control:focus {
+      color: var(--text);
+      background: transparent;
+      border-color: var(--blue);
+      box-shadow: none;
+    }
+
+    .form-control::placeholder {
+      color: #78859a;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+    }
+
+    /* Footer */
+    footer {
+      padding: 24px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      font-size: .8rem;
+    }
+
+    @media (max-width: 767px) {
+      .hero {
+        min-height: auto;
+        padding-top: 105px;
+      }
+
+      .hero-photo {
+        min-height: 340px;
+      }
+
+      .project-tall img,
+      .project-card img {
+        height: 320px;
+      }
+
+      .portfolio-section {
+        padding: 60px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">YN<span>.</span></a>
+
+      <button
+        class="navbar-toggler bg-light"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#mainNav"
+        aria-controls="mainNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+        <div class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#skills">Skills</a>
+          <a class="nav-link" href="#projects">Projects</a>
+          <a class="nav-contact ms-lg-2 mt-2 mt-lg-0" href="#contact">Contact me ↗</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Intro -->
+    <section class="hero container" id="home">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-6">
+          <p class="eyebrow">WEB DEVELOPER · DESIGN · CODE</p>
+
+          <h1>
+            Turning ideas into<br>
+            <em class="accent">beautiful experiences.</em>
+          </h1>
+
+          <p class="hero-copy mt-4">
+            Hi, I’m <strong class="text-light">Gat Pranjali</strong> — a creative
+            developer who enjoys building stylish, responsive websites.
+            I bring ideas to life with clean design and thoughtful code.
+          </p>
+
+          <div class="d-flex flex-wrap gap-3 mt-4">
+            <a href="#projects" class="button-primary">See my projects ↘</a>
+            <a href="#contact" class="button-outline">Let’s connect ↗</a>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <div
+            class="hero-photo"
+            role="img"
+            aria-label="Creative web development workspace"
+          ></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="portfolio-section" id="about">
+      <div class="container">
+        <p class="section-label"><span></span> ABOUT ME</p>
+
+        <div class="row align-items-start g-4 mt-3">
+          <div class="col-lg-6">
+            <h2>
+              Creative thinking.<br>
+              <em class="accent">Thoughtful coding.</em>
+            </h2>
+          </div>
+
+          <div class="col-lg-5 offset-lg-1 about-copy">
+            <p>
+              I enjoy creating websites that look great, work smoothly, and
+              feel simple to use. I like turning a rough idea into a polished
+              page that works on phones, tablets, and computers.
+            </p>
+            <p>
+              I’m always learning, experimenting with new ideas, and building
+              projects that help me grow as a developer.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="portfolio-section" id="skills">
+      <div class="container">
+        <p class="section-label"><span></span> MY SKILLS</p>
+
+        <div class="row g-3 mt-3">
+          <div class="col-sm-6 col-lg">
+            <article class="skill-card">
+              <div class="skill-icon">&lt;/&gt;</div>
+              <h3>HTML</h3>
+              <p>Creating clear, well-structured web pages.</p>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg">
+            <article class="skill-card">
+              <div class="skill-icon">#</div>
+              <h3>CSS</h3>
+              <p>Styling pages with responsive layouts and visual details.</p>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg">
+            <article class="skill-card">
+              <div class="skill-icon">JS</div>
+              <h3>JavaScript</h3>
+              <p>Adding interactive features and useful page behavior.</p>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg">
+            <article class="skill-card">
+              <div class="skill-icon">Py</div>
+              <h3>Python</h3>
+              <p>Writing programs, scripts, and practical solutions.</p>
+            </article>
+          </div>
+
+          <div class="col-sm-6 col-lg">
+            <article class="skill-card">
+              <div class="skill-icon">B</div>
+              <h3>Bootstrap</h3>
+              <p>Building responsive websites with reusable components.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="portfolio-section" id="projects">
+      <div class="container">
+        <p class="section-label"><span></span> MY PROJECTS</p>
+
+        <div class="d-flex flex-wrap justify-content-between align-items-end mt-3 mb-4">
+          <h2>Things I’ve <em class="accent">created.</em></h2>
+          <p class="muted-text mb-2">A few projects from my learning journey.</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6">
+            <a
+              class="project-card project-tall"
+              href="https://pricepe.vercel.app"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src="1.png"
+                alt="Website dashboard displayed on a laptop"
+              >
+              <span class="project-type"></span>
+
+              <h3>Smart Shopping↗</h3>
+              
+            </a>
+          </div>
+
+          <div class="col-md-6">
+            <a
+              class="project-card"
+              href="https://famous-arts.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src="ar.png"
+                alt="Colorful creative design project"
+              >
+              <span class="project-type"></span>
+              <h3>Famous Arts↗</h3>
+            </a>
+
+            <a
+              class="project-card mt-5"
+              href="https://coffee-shop-three-roan.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img
+                src="cof.png"
+                alt="Data and analytics dashboard"
+              >
+              <span class="project-type"></span>
+              <h3>A Coffee Shop↗</h3>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="portfolio-section" id="contact">
+      <div class="container">
+        <div class="row g-5">
+          <div class="col-lg-5">
+            <p class="section-label"><span></span> CONTACT ME</p>
+
+            <h2 class="mt-4">
+              Let’s make something<br>
+              <em class="accent">great together.</em>
+            </h2>
+
+            <p class="muted-text mt-3">
+              Have a project or an idea? Send me a message. I’d love to hear from you.
+            </p>
+
+            <div class="d-flex flex-wrap gap-4 mt-4">
+              <a
+                class="social-link"
+                href="https://www.instagram.com/_gat.16/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                ◎ Instagram
+              </a>
+
+              <a
+                class="social-link"
+                href="https://wa.me/919370455600"
+                target="_blank"
+                rel="noreferrer"
+              >
+                ◉ WhatsApp
+              </a>
+            </div>
+          </div>
+
+          <div class="col-lg-6 offset-lg-1">
+            <form id="contactForm">
+              <div class="mb-4">
+                <label class="form-label" for="name">Your name</label>
+                <input
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Enter your name"
+                  required
+                >
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label" for="email">Email address</label>
+                <input
+                  class="form-control"
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@example.com"
+                  required
+                >
+              </div>
+
+              <div class="mb-4">
+                <label class="form-label" for="message">Your message</label>
+                <textarea
+                  class="form-control"
+                  id="message"
+                  name="message"
+                  rows="4"
+                  placeholder="Tell me about your project..."
+                  required
+                ></textarea>
+              </div>
+
+              <button class="button-primary" type="submit">Send message ↗</button>
+              <p class="small muted-text mt-3" id="formMessage">
+                Replace the placeholder email in the JavaScript with your own.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <a class="navbar-brand" href="#home">YN<span>.</span></a>
+      <span>Made with care · Your City</span>
+      <span>© <span id="year"></span> Your Name</span>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Portfolio JavaScript -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const contactForm = document.getElementById("contactForm");
+
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(contactForm);
+      const yourEmail = "your-email@example.com"; // Yahan apna email address daalein
+
+      const subject = encodeURIComponent(
+        "Portfolio message from " + formData.get("name")
+      );
+
+      const body = encodeURIComponent(
+        "Name: " + formData.get("name") +
+        "\nEmail: " + formData.get("email") +
+        "\n\nMessage:\n" + formData.get("message")
+      );
+
+      document.getElementById("formMessage").textContent =
+        "Your email app is opening to send the message.";
+
+      window.location.href =
+        "mailto:" + yourEmail + "?subject=" + subject + "&body=" + body;
+    });
+  </script>
+</body>
+</html>
